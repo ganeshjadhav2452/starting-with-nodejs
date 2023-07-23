@@ -1,0 +1,1 @@
+this is data to be added with synchronous nature hi this is ganeshim updating this data in the createdSyncFileByFs.txt file
