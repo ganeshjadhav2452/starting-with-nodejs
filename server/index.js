@@ -1,11 +1,13 @@
 // making server
-
+const fs = require('fs')
 const http = require('http')
+const apiData = fs.readFileSync('api.json','utf-8');
 const server = http.createServer((req,res)=>{
    if(req.url === '/'){
     res.end('hi this is my first node js home page')
-   }else if(req.url === '/download'){
-    res.end('hi this is my first download page')
+   }else if(req.url === '/user'){
+    res.end(apiData)
+    
    }else{
     res.end('404 page not found ')
    }
