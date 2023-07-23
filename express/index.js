@@ -1,18 +1,26 @@
 const express = require('express')
-
 const app = express()
 
+const fs = require('fs')
+const path = require('path')
+
+
+const apiData = fs.readFileSync('api.json','utf-8');
+
+
+const pathDir = path.join(__dirname,'public')
+app.use(express.static(pathDir))
 app.get('/',(req,res)=>{
-   res.send('hi this is first express root')
+   res.sendFile(`${pathDir}/index.html`)
 })
 
-app.get('/about',(req,res)=>{
-    res.send('hi this is first express about root')
+app.get('/home',(req,res)=>{
+    res.sendFile(`${pathDir}/home.html`)
  })
 
 
  app.get('/download',(req,res)=>{
-    res.send('download file')
+    res.download(`${pathDir}/index.html`)
  })
 
 app.listen(4000,()=>{
